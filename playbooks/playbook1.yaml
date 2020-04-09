@@ -1,0 +1,9 @@
+---
+- name: My first playbook
+  hosts: localhosts
+  become: true
+  become_method: sudo
+   tasks: 
+   - name: install package
+     package:  
+       name: installed 
