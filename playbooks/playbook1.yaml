@@ -22,4 +22,8 @@
   - name: Add Tom
     user:
       name: tom
+<<<<<<< HEAD
       state: present
+=======
+      state: present
+>>>>>>> 682f20b8f54a3166759d95740a896b57c4623bfa
