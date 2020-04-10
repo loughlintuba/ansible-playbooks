@@ -1,5 +1,5 @@
 ---
-- name: My First playbook
+- name: Task playbook
   hosts: all
   become: true
   become_method: sudo
@@ -9,9 +9,9 @@
       name: httpd
       state: installed 
 
-  - name: Install Telnet
+  - name: Install Worpress
     package:
-      name: telnet
+      name: wordpress
       state: installed 
 
   - name: Add Bob
