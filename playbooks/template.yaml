@@ -1,7 +1,8 @@
 ---
-- name: My first playbook
-  hosts: localhost
+- name: My First playbook
+  hosts: all
   become: true
   become_method: sudo
-  tasks: 
+  user: centos
+  tasks:
   - name: 
