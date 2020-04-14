@@ -4,7 +4,6 @@
   become: true
   become_method: sudo
   user: centos
-  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
   tasks:
   - name: Create repo
     copy:
@@ -12,22 +11,26 @@
       dest: /etc/yum.repos.d/
 
   - name: Install agent
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     package:  
       name: serverbackup-enterprise-agent   
       state: installed 
     notify: AGENT_RESTART
 
   - name: Stop iptables
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     service: 
       name: iptables
       state: stopped
       enabled: false
 
   - name: Get Key
-    shell: "r1soft-setup --get-key 52.13.51.166" 
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
+    shell: "r1soft-setup --get-key 35.179.65.80" 
 
   handlers: 
     name: AGENT_RESTART
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     service: 
       name: cdp-agent 
       state: restarted
