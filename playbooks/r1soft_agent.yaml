@@ -6,6 +6,7 @@
   user: centos
   tasks:
   - name: Create repo
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     copy:
       src: r1soft.repo
       dest: /etc/yum.repos.d/
@@ -26,12 +27,12 @@
 
   - name: Get Key
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
-    shell: "r1soft-setup --get-key 35.179.65.80" 
+    shell: "r1soft-setup --get-key http://backup.acirrustech.com/" 
 
+  
   handlers: 
   - name: AGENT_RESTART
     service: 
       name: cdp-agent 
       state: restarted
       enabled: true
-  
